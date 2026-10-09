@@ -1,0 +1,40 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* Preserve the existing browser defaults; a full reset would change the layout. */
+@layer base {
+  p { @apply m-0; }
+  h1, h2 { @apply font-sans font-medium; }
+  h2 { @apply leading-[1.18] tracking-[-0.24px]; }
+}
+
+@theme {
+  --font-sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-arial: Arial, sans-serif;
+  --font-narrow: "Arial Narrow", Arial, sans-serif;
+  --font-georgia: Georgia, serif;
+  --font-burger: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  --font-nav: Impact, Haettenschweiler, "Arial Narrow Semi Bold", sans-serif;
+  --color-burgundy: #7f1d1d;
+  --color-cream: #fff8ee;
+  --color-burger-gold: #f4ce69;
+  --animate-cart-notice: cart-notice-in-out 3s ease both;
+  --animate-cart-notice-fade: cart-notice-fade 3s ease both;
+
+  @keyframes cart-notice-in-out {
+    0%, 100% { opacity: 0; transform: translateY(12px); }
+    10%, 90% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes cart-notice-fade {
+    0%, 100% { opacity: 0; }
+    10%, 90% { opacity: 1; }
+  }
+}
+
+@custom-variant phone (@media (width <= 600px));
+@custom-variant compact-nav (@media (width <= 760px));
+@custom-variant tablet-nav (@media (761px <= width <= 920px));
+@custom-variant compact-hero (@media (width <= 900px));
+@custom-variant tablet-menu (@media (601px <= width <= 980px));
+@custom-variant compact-type (@media (width <= 1024px));
